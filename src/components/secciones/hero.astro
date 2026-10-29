@@ -3,6 +3,7 @@
 // `antetitulo`, título en serif cursiva, ornamento, `texto`, `cta` y `cta_secundario` (opcional).
 // En móvil la foto va arriba y la caja se monta encima de su borde inferior. Sin imagen, fondo salvia claro.
 import { seccion, enlace } from '../../data/site';
+import { altHero } from '../../lib/seo';
 import Imagen from '../ui/Imagen.astro';
 interface Props { id: string; primera?: boolean }
 const { id, primera = false } = Astro.props;
@@ -15,7 +16,7 @@ const cta2 = enlace(s?.cta_secundario);
   s && (
     <section id={id} class:list={['relative overflow-hidden pb-14 md:grid md:min-h-[88svh] md:place-items-center md:py-24', !s.imagen && 'salvia pt-14']}>
       {s.imagen && (
-        <Imagen src={s.imagen} alt="" ancho={1920} alto={1080} prioridad={primera} class="block h-[56svh] w-full object-cover md:absolute md:inset-0 md:h-full" />
+        <Imagen src={s.imagen} alt={altHero()} ancho={1920} alto={1080} prioridad={primera} class="block h-[56svh] w-full object-cover md:absolute md:inset-0 md:h-full" />
       )}
       <div class:list={['contenedor relative', s.imagen && '-mt-24 md:mt-0']}>
         <div class="caja-marfil mx-auto max-w-[40rem]">

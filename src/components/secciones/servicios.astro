@@ -2,6 +2,7 @@
 // Servicios: `items: [{titulo, texto, imagen, icono}]` en tarjetas altas 3:4 con marco fino interior,
 // título en cursiva y texto centrados. Sin imagen se muestra el icono en un círculo dorado.
 import { seccion } from '../../data/site';
+import { altFicha } from '../../lib/seo';
 import Seccion from '../ui/Seccion.astro';
 import Titular from '../ui/Titular.astro';
 import Imagen from '../ui/Imagen.astro';
@@ -22,7 +23,7 @@ const columnas = n >= 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : n === 3 ? 'sm:grid-c
             <li class="text-center">
               {it.imagen ? (
                 <span class="marco">
-                  <Imagen src={it.imagen} alt="" ancho={720} alto={960} class="aspect-[3/4] w-full object-cover" />
+                  <Imagen src={it.imagen} alt={altFicha(it)} ancho={720} alto={960} class="aspect-[3/4] w-full object-cover" />
                 </span>
               ) : (
                 <span class="mx-auto grid size-16 place-items-center rounded-full border border-acento text-primario">

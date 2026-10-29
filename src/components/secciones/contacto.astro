@@ -3,6 +3,7 @@
 // fecha del evento, tipo e invitados. `tipos_evento`: cadena separada por «;» con las opciones del tipo
 // (vacía = Boda; Comunión; Empresa; Otro). `imagen` opcional junto al formulario. `boton`: texto del botón.
 import { seccion, site, tel, whatsapp, cadena, partes } from '../../data/site';
+import { altSeccion } from '../../lib/seo';
 import Seccion from '../ui/Seccion.astro';
 import Titular from '../ui/Titular.astro';
 import Imagen from '../ui/Imagen.astro';
@@ -37,7 +38,7 @@ const boton = cadena(s?.boton) || undefined;
       <div class:list={['mx-auto grid items-stretch gap-8', s.imagen ? 'max-w-6xl md:grid-cols-12' : 'max-w-3xl']}>
         {s.imagen && (
           <span class="marco hidden md:col-span-5 md:block">
-            <Imagen src={s.imagen} alt="" ancho={900} alto={1125} class="h-full w-full object-cover" />
+            <Imagen src={s.imagen} alt={altSeccion(s)} ancho={900} alto={1125} class="h-full w-full object-cover" />
           </span>
         )}
         <div class:list={['caja-form', s.imagen && 'md:col-span-7']}>

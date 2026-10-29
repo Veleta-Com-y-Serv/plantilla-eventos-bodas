@@ -13,7 +13,7 @@ secciones:
   - { id: contacto, nombre: Contacto }
 estilo: romantico
 plan_minimo: presencia
-version: 1.1.0
+version: 1.2.0
 base: astrowind
 demo_url: https://demo-plantilla-eventos-bodas.noexpertise.com
 activa: true
