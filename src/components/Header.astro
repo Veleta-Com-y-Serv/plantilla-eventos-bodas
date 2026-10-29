@@ -1,0 +1,61 @@
+---
+// Cabecera: logo (o nombre en cursiva) centrado y el menú de site.yaml repartido a izquierda y derecha.
+// La primera mitad de `menu` va a la izquierda y el resto a la derecha; `boton_cabecera` (si trae url) cierra
+// el lado derecho como enlace con filete dorado. En móvil y tableta: logo centrado y menú plegable (<details>).
+// Aspecto en src/styles/global.css (.cabecera--bodas).
+import { site } from '../data/site';
+import type { Enlace } from '../data/site';
+interface Props { variante?: string; cta?: Enlace | null }
+const { variante = 'bodas', cta = null } = Astro.props;
+const extra = cta && cta.url && cta.texto ? cta : null;
+const mitad = Math.ceil(site.menu.length / 2);
+const izq = site.menu.slice(0, mitad);
+const der = site.menu.slice(mitad);
+---
+
+<header class={`cabecera cabecera--${variante}`}>
+  <div class="contenedor cabecera-fila">
+    <nav class="partida" aria-label="Menú principal">
+      {izq.length > 0 && <div class="partida-lado partida-izq">{izq.map((e) => <a href={e.url}>{e.texto}</a>)}</div>}
+      <a href="/" class="marca" aria-label={`${site.nombre}, inicio`}>
+        {
+          site.logo ? (
+            <img src={site.logo} alt={site.nombre} class="marca-logo" width="160" height="40" />
+          ) : (
+            <>
+              <span class="marca-inicial" aria-hidden="true">{site.nombre.trim().charAt(0)}</span>
+              <span class="marca-nombre">{site.nombre}</span>
+            </>
+          )
+        }
+      </a>
+      {
+        (der.length > 0 || extra) && (
+          <div class="partida-lado partida-der">
+            {der.map((e) => <a href={e.url}>{e.texto}</a>)}
+            {extra && <a href={extra.url} class="cabecera-enlace">{extra.texto}</a>}
+          </div>
+        )
+      }
+    </nav>
+    {
+      (site.menu.length > 0 || extra) && (
+        <details class="menu-movil">
+          <summary>
+            <span class="menu-movil-icono" aria-hidden="true" />
+            <span>Menú</span>
+          </summary>
+          <nav class="menu-movil-panel" aria-label="Menú">
+            {site.menu.map((e) => <a href={e.url}>{e.texto}</a>)}
+            {extra && <a href={extra.url}>{extra.texto}</a>}
+          </nav>
+        </details>
+      )
+    }
+  </div>
+</header>
+<script is:inline>
+  document.querySelectorAll('.menu-movil a').forEach(function (a) {
+    a.addEventListener('click', function () { a.closest('details').open = false; });
+  });
+</script>

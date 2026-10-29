@@ -1,0 +1,20 @@
+id: eventos-bodas
+nombre: Bodas y eventos
+descripcion: Web romántica para wedding planners, fincas, fotógrafos y catering de bodas, con packs y galería.
+sectores: [bodas, eventos, wedding-planner, fotografia-bodas, catering, espacios]
+secciones:
+  - { id: hero, nombre: Portada }
+  - { id: servicios, nombre: Servicios }
+  - { id: galeria, nombre: Galería }
+  - { id: packs, nombre: Packs y precios }
+  - { id: proceso, nombre: Cómo trabajamos }
+  - { id: opiniones, nombre: Opiniones }
+  - { id: preguntas, nombre: Preguntas frecuentes }
+  - { id: contacto, nombre: Contacto }
+estilo: romantico
+plan_minimo: presencia
+version: 1.0.0
+base: astrowind
+demo_url: https://demo-plantilla-eventos-bodas.noexpertise.com
+activa: true
+orden: 160

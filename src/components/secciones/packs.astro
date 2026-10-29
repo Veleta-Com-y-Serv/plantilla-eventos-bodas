@@ -1,0 +1,50 @@
+---
+// Packs: `packs: [{nombre, precio, texto, incluye, destacado}]` en columnas con borde fino dorado; el destacado,
+// con fondo salvia claro y doble filete. `precio` es cadena («desde 2.400 €»): vacío = no se muestra.
+// `incluye` es una cadena separada por «;» y se pinta como lista. `cta` común a todos los packs; `nota` debajo.
+// Sin packs no se pinta.
+import { seccion, cadena, partes, enlace } from '../../data/site';
+import Seccion from '../ui/Seccion.astro';
+import Titular from '../ui/Titular.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const packs = (s?.packs ?? []).filter((p) => cadena(p.nombre));
+const cta = enlace(s?.cta);
+const nota = cadena(s?.nota);
+const columnas = packs.length >= 3 ? "md:grid-cols-3" : packs.length === 2 ? 'md:grid-cols-2 max-w-4xl' : 'max-w-md';
+---
+
+{
+  s && packs.length > 0 && (
+    <Seccion id={Astro.props.id}>
+      <Titular antetitulo={s.antetitulo} titulo={s.titulo} texto={s.texto} />
+      <ul class:list={['mx-auto grid items-stretch gap-6 lg:gap-8', columnas]}>
+        {packs.map((p) => {
+          const precio = cadena(p.precio);
+          const incluye = partes(p.incluye);
+          return (
+            <li class:list={['pack', p.destacado === true && 'pack--destacado']}>
+              <h3 class="text-[1.7rem]">{p.nombre}</h3>
+              {precio && <p class="pack-precio mt-4">{precio}</p>}
+              <p class="ornamento" aria-hidden="true"><i></i></p>
+              {cadena(p.texto) && <p class="suave mt-5">{p.texto}</p>}
+              {incluye.length > 0 && (
+                <ul class="pack-incluye">
+                  {incluye.map((x) => <li>{x}</li>)}
+                </ul>
+              )}
+              {cta && (
+                <p class="mt-auto pt-8">
+                <a class:list={[p.destacado === true ? "btn" : "btn-sec"]} href={cta.url}>
+                  <span class="sr-only">{p.nombre}: </span>{cta.texto}
+                </a>
+                </p>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+      {nota && <p class="suave estrecho mt-10 text-center text-sm">{nota}</p>}
+    </Seccion>
+  )
+}

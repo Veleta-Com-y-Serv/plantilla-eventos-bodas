@@ -1,0 +1,18 @@
+---
+// Titular de sección centrado (antetítulo en versalitas + título en cursiva + ornamento dorado + texto).
+// Adaptado de AstroWind (Headline.astro), © onWidget, MIT.
+interface Props { titulo?: string; antetitulo?: string; texto?: string; class?: string; nivel?: 1 | 2; ornamento?: boolean }
+const { titulo, antetitulo, texto, class: clase = '', nivel = 2, ornamento = true } = Astro.props;
+const H = nivel === 1 ? 'h1' : 'h2';
+---
+
+{
+  (titulo || antetitulo || texto) && (
+    <div class:list={['titular', clase]}>
+      {antetitulo && <p class="antetitulo">{antetitulo}</p>}
+      {titulo && <H class="titulo-seccion">{titulo}</H>}
+      {ornamento && titulo && <p class="ornamento" aria-hidden="true"><i></i></p>}
+      {texto && <p class="titular-texto">{texto}</p>}
+    </div>
+  )
+}

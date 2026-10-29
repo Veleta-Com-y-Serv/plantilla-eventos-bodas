@@ -1,0 +1,55 @@
+---
+// Pie centrado: nombre en cursiva, eslogan, ornamento dorado, menú, redes y datos de contacto desde site.yaml.
+// «Web creada con NoExpertise» se muestra si site.yaml → marca_pie no es false.
+import { site, tel, mapa } from '../data/site';
+import Icono from './ui/Icono.astro';
+interface Props { variante?: string }
+const { variante = 'bodas' } = Astro.props;
+const c = site.contacto;
+const redes = Object.entries(site.redes).filter(([, url]) => url);
+const anio = new Date().getFullYear();
+---
+
+<footer class={`pie pie--${variante}`}>
+  <div class="contenedor">
+    <p class="pie-nombre">{site.nombre}</p>
+    {site.eslogan && <p class="suave mx-auto mt-2 max-w-md">{site.eslogan}</p>}
+    <p class="ornamento" aria-hidden="true"><i></i></p>
+    {
+      site.menu.length > 0 && (
+        <nav class="pie-menu versalitas" aria-label="Menú del pie">
+          {site.menu.map((e) => <a href={e.url}>{e.texto}</a>)}
+        </nav>
+      )
+    }
+    {
+      redes.length > 0 && (
+        <ul class="pie-redes">
+          {redes.map(([red, url]) => (
+            <li>
+              <a href={url} rel="noopener" target="_blank" aria-label={red}>
+                <Icono nombre={red} tam={18} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    <p class="pie-datos">
+      {c.telefono && <a href={tel(c.telefono)}>{c.telefono}</a>}
+      {c.email && <a href={`mailto:${c.email}`}>{c.email}</a>}
+      {c.direccion && <a href={mapa(c.direccion)} rel="noopener" target="_blank">{c.direccion}</a>}
+    </p>
+  </div>
+  <div class="contenedor pie-legal">
+    <span>© {anio} {site.nombre}</span>
+    <a href="/aviso-legal">Aviso legal y privacidad</a>
+    {
+      site.marca_pie && (
+        <span class="pie-noexpertise">
+          Web creada con <a href="https://noexpertise.com" rel="noopener">NoExpertise</a>
+        </span>
+      )
+    }
+  </div>
+</footer>

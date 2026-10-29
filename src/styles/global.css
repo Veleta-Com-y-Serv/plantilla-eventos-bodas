@@ -1,0 +1,144 @@
+/* Bodas y eventos — estilo romántico: marfil + salvia + dorado, todo centrado, títulos en serif cursiva ligera,
+   antetítulos en versalitas muy espaciadas y filetes dorados finos como ornamento.
+   Todos los colores salen de las variables de site.yaml (--c-primario, --c-acento, --c-fondo, --c-texto). */
+@import "tailwindcss";
+@import "./comun.css";
+@config "../../tailwind.config.mjs";
+
+:root {
+  --fuente-texto: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --fuente-titulos: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --fuente-detalle: "Gill Sans", "Gill Sans MT", "Segoe UI", system-ui, sans-serif;
+  --radio: 0; --ritmo: 5rem; --ritmo-md: 8rem; --ancho: 76rem; --estrecho: 44rem;
+  --dorado: var(--c-acento);
+  --dorado-texto: color-mix(in srgb, var(--c-acento) 55%, var(--c-texto));
+  --salvia-claro: color-mix(in srgb, var(--c-primario) 13%, var(--c-fondo));
+  --linea-dorada: color-mix(in srgb, var(--c-acento) 70%, transparent);
+  --suave: color-mix(in srgb, var(--c-texto) 74%, var(--c-fondo));
+}
+
+@layer base {
+  body { font-family: var(--fuente-texto); font-size: 1.0625rem; line-height: 1.7; }
+  h1, h2, h3 { font-family: var(--fuente-titulos); font-style: italic; font-weight: 400; letter-spacing: 0; line-height: 1.15; }
+  ::selection { background: var(--salvia-claro); }
+}
+
+@layer components {
+  .estrecho { max-width: var(--estrecho); margin-inline: auto; }
+  .suave { color: var(--suave); }
+  .salvia { background: var(--salvia-claro); }
+  .versalitas { font-family: var(--fuente-detalle); font-size: .78rem; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; }
+
+  .antetitulo { font-family: var(--fuente-detalle); font-size: .78rem; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; color: var(--dorado-texto); }
+  .titulo-seccion { font-size: clamp(2.1rem, 5.2vw, 3.6rem); margin-top: .9rem; }
+  .titular { max-width: var(--estrecho); margin: 0 auto 3.5rem; text-align: center; }
+  .titular-texto { margin-top: 1.1rem; font-size: 1.125rem; color: var(--suave); }
+
+  /* Ornamento: filete dorado — rombo — filete */
+  .ornamento { display: flex; align-items: center; justify-content: center; gap: .75rem; margin-top: 1.4rem; color: var(--dorado); }
+  .ornamento::before, .ornamento::after { content: ""; width: 3.5rem; height: 1px; background: currentColor; }
+  .ornamento > i { width: 7px; height: 7px; border: 1px solid currentColor; transform: rotate(45deg); }
+  .filete-dorado { border-top: 1px solid var(--linea-dorada); }
+
+  /* Botones rectos en versalitas */
+  .btn, .btn-sec { font-family: var(--fuente-detalle); font-size: .8rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; border-radius: 0; min-height: 3rem; padding: .85rem 2rem; }
+  .btn { background: var(--c-primario); color: var(--c-fondo); }
+  .btn:hover { background: color-mix(in srgb, var(--c-primario) 80%, var(--c-texto)); }
+  .btn-sec { border: 1px solid var(--dorado); color: var(--c-texto); }
+  .btn-sec:hover { background: color-mix(in srgb, var(--c-acento) 14%, transparent); }
+
+  /* Cabecera: logo centrado, menú repartido a izquierda y derecha. En móvil, logo centrado y menú plegable. */
+  .cabecera--bodas { border-bottom: 1px solid var(--linea-dorada); background: var(--c-fondo); }
+  .cabecera--bodas .cabecera-fila { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; min-height: 4.75rem; gap: 1rem; }
+  .cabecera--bodas .partida { display: contents; }
+  .cabecera--bodas .partida-lado { display: none; gap: 1.6rem; }
+  .cabecera--bodas .partida-lado a { font-family: var(--fuente-detalle); font-size: .74rem; letter-spacing: .18em; white-space: nowrap; text-transform: uppercase; text-decoration: none; padding-block: .4rem; border-bottom: 1px solid transparent; }
+  .cabecera--bodas .partida-lado a:hover { border-bottom-color: var(--dorado); }
+  .cabecera--bodas .partida-lado .cabecera-enlace { border: 1px solid var(--dorado); padding: .45rem .9rem; }
+  .cabecera--bodas .marca { grid-column: 2; grid-row: 1; margin: 0; justify-self: center; flex-direction: column; gap: 0; text-align: center; }
+  .cabecera--bodas .marca-inicial { display: none; }
+  .cabecera--bodas .marca-nombre { font-family: var(--fuente-titulos); font-style: italic; font-size: 1.45rem; line-height: 1.1; white-space: normal; }
+  .cabecera--bodas .menu-movil { grid-column: 3; grid-row: 1; justify-self: end; }
+  .cabecera--bodas .menu-movil summary { font-family: var(--fuente-detalle); font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 500; }
+  .cabecera--bodas .menu-movil-panel { align-items: center; text-align: center; border-bottom: 1px solid var(--linea-dorada); box-shadow: none; }
+  .cabecera--bodas .menu-movil-panel a { width: 100%; font-family: var(--fuente-titulos); font-style: italic; font-size: 1.25rem; border-bottom-color: color-mix(in srgb, var(--c-acento) 30%, transparent); }
+  @media (min-width: 1100px) {
+    .cabecera--bodas .cabecera-fila { min-height: 6.5rem; gap: 2.5rem; }
+    .cabecera--bodas .partida-lado { display: flex; align-items: center; }
+    .cabecera--bodas .partida-izq { grid-column: 1; grid-row: 1; justify-self: end; }
+    .cabecera--bodas .partida-der { grid-column: 3; grid-row: 1; justify-self: start; }
+    .cabecera--bodas .marca-nombre { font-size: 1.9rem; }
+    .cabecera--bodas .menu-movil { display: none; }
+  }
+  @media (min-width: 900px) and (max-width: 1099.98px) { .cabecera--bodas .menu-movil { display: block; } }
+
+  /* Portada: foto a todo el ancho con caja marfil centrada */
+  .caja-marfil { position: relative; background: color-mix(in srgb, var(--c-fondo) 95%, transparent); padding: 2.75rem 1.5rem; text-align: center; outline: 1px solid var(--linea-dorada); outline-offset: -10px; }
+  @media (min-width: 768px) { .caja-marfil { padding: 4rem 4.5rem; outline-offset: -14px; } }
+
+  /* Marco dorado interior sobre imágenes */
+  .marco { position: relative; display: block; }
+  .marco::after { content: ""; position: absolute; inset: 12px; border: 1px solid color-mix(in srgb, var(--c-fondo) 80%, transparent); pointer-events: none; }
+
+  /* Galería en columnas */
+  .mosaico { columns: 2; column-gap: 1rem; }
+  .mosaico > li { break-inside: avoid; margin-bottom: 1rem; }
+  @media (min-width: 768px) { .mosaico { columns: 3; column-gap: 2rem; } .mosaico > li { margin-bottom: 2rem; } }
+
+  /* Packs */
+  .pack { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 2.5rem 1.5rem; border: 1px solid var(--linea-dorada); }
+  .pack--destacado { background: var(--salvia-claro); border-color: var(--dorado); box-shadow: inset 0 0 0 5px var(--c-fondo), inset 0 0 0 6px var(--linea-dorada); }
+  .pack-precio { font-family: var(--fuente-titulos); font-style: italic; font-size: 2.1rem; line-height: 1.2; color: var(--c-primario); }
+  .pack-incluye { width: 100%; margin-top: 1.5rem; }
+  .pack-incluye > li { padding-block: .65rem; border-top: 1px solid color-mix(in srgb, var(--c-acento) 35%, transparent); font-size: .98rem; }
+
+  /* Proceso vertical centrado */
+  .pasos > li { text-align: center; }
+  .pasos > li + li::before { content: ""; display: block; width: 1px; height: 3.25rem; margin: 1.25rem auto; background: var(--linea-dorada); }
+  .paso-num { display: inline-grid; place-items: center; width: 3.25rem; height: 3.25rem; border: 1px solid var(--dorado); border-radius: 50%; font-family: var(--fuente-titulos); font-style: italic; font-size: 1.3rem; color: var(--dorado-texto); }
+
+  /* Carrusel de opiniones sin JavaScript: solo se desplaza la lista, nunca la página */
+  .carrusel { display: flex; gap: 1.25rem; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: 1rem; padding: .5rem .25rem 1.75rem; scrollbar-width: thin; scrollbar-color: var(--dorado) transparent; }
+  .carrusel > li { flex: 0 0 88%; scroll-snap-align: center; display: flex; }
+  .carrusel > li:only-child { margin-inline: auto; }
+  @media (min-width: 768px) { .carrusel { gap: 2rem; } .carrusel > li { flex-basis: 60%; } }
+  @media (min-width: 1200px) { .carrusel > li { flex-basis: 46%; } }
+  .opinion { width: 100%; display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 2.5rem 1.5rem; background: var(--c-fondo); border: 1px solid var(--linea-dorada); }
+  @media (min-width: 768px) { .opinion { padding: 3.25rem 3rem; } }
+  .opinion-comilla { font-family: var(--fuente-titulos); font-size: 4rem; line-height: .6; color: var(--dorado); }
+  .opinion blockquote { font-family: var(--fuente-titulos); font-style: italic; font-size: 1.3rem; line-height: 1.55; }
+
+  /* Preguntas */
+  .preguntas details { border-bottom: 1px solid var(--linea-dorada); }
+  .preguntas details:first-child { border-top: 1px solid var(--linea-dorada); }
+  .preguntas summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 1rem; padding-block: 1.2rem; font-family: var(--fuente-titulos); font-style: italic; font-size: 1.2rem; }
+  .preguntas summary::-webkit-details-marker { display: none; }
+  .preguntas summary::after { content: "+"; flex-shrink: 0; font-style: normal; font-size: 1.4rem; line-height: 1.2; color: var(--dorado-texto); transition: transform .2s; }
+  .preguntas details[open] summary::after { transform: rotate(45deg); }
+  .preguntas details > div { padding-bottom: 1.3rem; color: var(--suave); }
+
+  /* Formulario */
+  .caja-form { border: 1px solid var(--linea-dorada); padding: 1.5rem; background: var(--c-fondo); }
+  @media (min-width: 768px) { .caja-form { padding: 2.75rem; } }
+  .formulario .campo label { font-family: var(--fuente-detalle); font-size: .72rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; }
+  .formulario .campo input, .formulario .campo textarea, .campo select { width: 100%; font: inherit; color: inherit; background: transparent; padding: .7rem .1rem; border: 0; border-bottom: 1px solid color-mix(in srgb, var(--c-texto) 30%, transparent); border-radius: 0; }
+  .formulario .campo input:focus, .formulario .campo textarea:focus, .campo select:focus { border-bottom-color: var(--c-primario); }
+  .campo select option { background: var(--c-fondo); color: var(--c-texto); }
+  .formulario .btn { justify-self: center; }
+  .formulario-aviso, .formulario .campo-check { justify-content: center; text-align: center; }
+
+  /* Pie centrado con redes */
+  .pie--bodas { padding-top: 4.5rem; text-align: center; border-top: 1px solid var(--linea-dorada); background: var(--salvia-claro); }
+  .pie--bodas .pie-nombre { font-family: var(--fuente-titulos); font-style: italic; font-weight: 400; font-size: 2rem; }
+  .pie--bodas .pie-redes { justify-content: center; margin-top: 1.75rem; gap: 1rem; }
+  .pie--bodas .pie-redes a { border: 1px solid var(--linea-dorada); border-radius: 50%; padding: .6rem; }
+  .pie--bodas .pie-redes a:hover { background: var(--c-fondo); }
+  .pie--bodas .pie-menu { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem 1.75rem; margin-top: 2rem; }
+  .pie--bodas .pie-menu a, .pie--bodas .pie-datos a { text-decoration: none; }
+  .pie--bodas .pie-menu a:hover, .pie--bodas .pie-datos a:hover { text-decoration: underline; text-decoration-color: var(--dorado); }
+  .pie--bodas .pie-datos { display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem 1.5rem; margin-top: 1.5rem; color: var(--suave); }
+  .pie--bodas .pie-legal { justify-content: center; margin-top: 3rem; border-top-color: var(--linea-dorada); }
+  .pie--bodas .pie-noexpertise { margin-left: 0; }
+
+  .texto-largo h2 { font-family: var(--fuente-titulos); font-style: italic; font-weight: 400; font-size: 1.5rem; }
+}

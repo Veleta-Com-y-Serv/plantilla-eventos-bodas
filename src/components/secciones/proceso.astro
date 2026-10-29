@@ -1,0 +1,30 @@
+---
+// Proceso: `items` numerados en vertical, centrados, unidos por un filete dorado fino.
+// Sin pasos solo queda el titular (o nada si tampoco hay título). `cta` opcional al final.
+import { seccion } from '../../data/site';
+import Seccion from '../ui/Seccion.astro';
+import Titular from '../ui/Titular.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const n = s?.items.length ?? 0;
+---
+
+{
+  s && (n > 0 || s.titulo) && (
+    <Seccion id={Astro.props.id}>
+      <Titular antetitulo={s.antetitulo} titulo={s.titulo} texto={s.texto} />
+      {n > 0 && (
+        <ol class="pasos estrecho">
+          {s.items.map((it, i) => (
+            <li>
+              <span class="paso-num" aria-hidden="true">{i + 1}</span>
+              <h3 class="mt-4 text-[1.6rem]">{it.titulo}</h3>
+              {it.texto && <p class="suave mx-auto mt-2 max-w-[30rem]">{it.texto}</p>}
+            </li>
+          ))}
+        </ol>
+      )}
+      {s.cta?.url && <p class="mt-14 text-center"><a class="btn" href={s.cta.url}>{s.cta.texto}</a></p>}
+    </Seccion>
+  )
+}

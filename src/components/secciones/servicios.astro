@@ -1,0 +1,41 @@
+---
+// Servicios: `items: [{titulo, texto, imagen, icono}]` en tarjetas altas 3:4 con marco fino interior,
+// título en cursiva y texto centrados. Sin imagen se muestra el icono en un círculo dorado.
+import { seccion } from '../../data/site';
+import Seccion from '../ui/Seccion.astro';
+import Titular from '../ui/Titular.astro';
+import Imagen from '../ui/Imagen.astro';
+import Icono from '../ui/Icono.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const n = s?.items.length ?? 0;
+const columnas = n >= 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : n === 3 ? 'sm:grid-cols-2 lg:grid-cols-3' : n === 2 ? 'sm:grid-cols-2' : '';
+---
+
+{
+  s && (
+    <Seccion id={Astro.props.id}>
+      <Titular antetitulo={s.antetitulo} titulo={s.titulo} texto={s.texto} />
+      {n > 0 && (
+        <ul class:list={['mx-auto grid max-w-[22rem] gap-x-8 gap-y-14 sm:max-w-none', columnas]}>
+          {s.items.map((it) => (
+            <li class="text-center">
+              {it.imagen ? (
+                <span class="marco">
+                  <Imagen src={it.imagen} alt="" ancho={720} alto={960} class="aspect-[3/4] w-full object-cover" />
+                </span>
+              ) : (
+                <span class="mx-auto grid size-16 place-items-center rounded-full border border-acento text-primario">
+                  <Icono nombre={it.icono} tam={26} />
+                </span>
+              )}
+              <h3 class="mt-6 text-[1.55rem]">{it.titulo}</h3>
+              {it.texto && <p class="suave mt-2">{it.texto}</p>}
+            </li>
+          ))}
+        </ul>
+      )}
+      {s.cta?.url && <p class="mt-14 text-center"><a class="btn-sec" href={s.cta.url}>{s.cta.texto}</a></p>}
+    </Seccion>
+  )
+}

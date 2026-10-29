@@ -1,0 +1,45 @@
+---
+// Galería: `galeria` (rutas de imagen) en mosaico editorial de columnas CSS con alturas distintas
+// (3:4, 1:1, 2:3, 4:3…, en ese orden cíclico) y margen generoso. `cta` opcional (p. ej. Instagram).
+// Sin fotos no se pinta.
+import { seccion } from '../../data/site';
+import Seccion from '../ui/Seccion.astro';
+import Titular from '../ui/Titular.astro';
+import Imagen from '../ui/Imagen.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const formas = [
+  { c: 'aspect-[3/4]', w: 750, h: 1000 },
+  { c: 'aspect-square', w: 900, h: 900 },
+  { c: 'aspect-[2/3]', w: 700, h: 1050 },
+  { c: 'aspect-[4/3]', w: 1000, h: 750 },
+  { c: 'aspect-[3/4]', w: 750, h: 1000 },
+  { c: 'aspect-[3/2]', w: 1050, h: 700 },
+  { c: 'aspect-[2/3]', w: 700, h: 1050 },
+  { c: 'aspect-square', w: 900, h: 900 },
+];
+const externo = (u: string) => /^https?:/.test(u);
+---
+
+{
+  s && s.galeria.length > 0 && (
+    <Seccion id={Astro.props.id} class="salvia">
+      <Titular antetitulo={s.antetitulo} titulo={s.titulo} texto={s.texto} />
+      <ul class="mosaico">
+        {s.galeria.map((g, i) => {
+          const f = formas[i % formas.length];
+          return (
+            <li>
+              <Imagen src={g} alt="" ancho={f.w} alto={f.h} class={`${f.c} w-full object-cover`} />
+            </li>
+          );
+        })}
+      </ul>
+      {s.cta?.url && (
+        <p class="mt-12 text-center">
+          <a class="btn-sec" href={s.cta.url} {...(externo(s.cta.url) ? { rel: 'noopener', target: '_blank' } : {})}>{s.cta.texto}</a>
+        </p>
+      )}
+    </Seccion>
+  )
+}

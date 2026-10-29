@@ -1,0 +1,124 @@
+# Contenido de la web. Es lo único que rellena la plataforma NoExpertise.
+# Las secciones se muestran en el orden de este fichero. Para ocultar una: activa: false.
+# Apartado nuevo: un id propio (es su ancla, /#id) con `tipo:` = el diseño de otra sección o `texto`.
+# Listas planas: nunca una lista dentro de un elemento de lista. Precios siempre entre comillas.
+nombre: Lino y Salvia
+eslogan: Organización de bodas y celebraciones en Segovia.
+sector: wedding-planner
+logo: ""          # ruta a una imagen en public/ (p. ej. /logo.svg). Vacío = nombre en cursiva.
+colores:
+  primario: "#5d7156"
+  acento: "#b08d57"
+  fondo: "#faf6ee"
+  texto: "#34362e"
+contacto:
+  telefono: "921 43 57 10"
+  email: hola@linoysalvia.es
+  direccion: Calle Real 22, 1.º, 40001 Segovia
+  horario: "Lunes a viernes, de 10:00 a 19:00. Sábados, con cita."
+  whatsapp: "639 207 514"
+redes:
+  instagram: https://www.instagram.com/
+  facebook: https://www.facebook.com/
+  linkedin: ""
+menu:
+  - { texto: Servicios, url: "/#servicios" }
+  - { texto: Galería, url: "/#galeria" }
+  - { texto: Packs, url: "/#packs" }
+  - { texto: Proceso, url: "/#proceso" }
+  - { texto: Opiniones, url: "/#opiniones" }
+  - { texto: Contacto, url: "/#contacto" }
+boton_cabecera: { texto: "", url: "" }   # vacío = el menú queda repartido a los dos lados del nombre
+seo:
+  titulo: Lino y Salvia · Organización de bodas en Segovia
+  descripcion: "Organizamos bodas y celebraciones en Segovia y alrededores: espacios, decoración, proveedores y coordinación del día."
+  tipo: LocalBusiness
+marca_pie: true
+
+secciones:
+  hero:
+    activa: true
+    antetitulo: Bodas y celebraciones · Segovia
+    titulo: Vuestra boda, sin prisas y con todo en su sitio.
+    texto: "Buscamos el espacio, coordinamos a los proveedores y cuidamos cada detalle para que ese día solo tengáis que disfrutar."
+    imagen: /fotos/hero.jpg
+    cta: { texto: Pedir fecha, url: "/#contacto" }
+
+  servicios:
+    activa: true
+    antetitulo: Qué hacemos
+    titulo: Todo lo que necesita vuestro día
+    texto: "Podéis contar con nosotras para todo o solo para lo que os falte."
+    items:
+      - { titulo: Organización, texto: "Espacio, proveedores, presupuesto y calendario, en un solo sitio.", imagen: /fotos/servicio-organizacion.jpg, icono: calendario }
+      - { titulo: Decoración y flores, texto: "Ceremonia, mesas y rincones con flor de temporada y materiales naturales.", imagen: /fotos/servicio-decoracion.jpg, icono: flor }
+      - { titulo: Fotografía y vídeo, texto: "Profesionales de confianza con estilos distintos para que elijáis el vuestro.", imagen: /fotos/servicio-fotografia.jpg, icono: camara }
+      - { titulo: Catering y banquete, texto: "Menús de producto local, pruebas de menú y bodega incluidas.", imagen: /fotos/servicio-catering.jpg, icono: copa }
+
+  galeria:
+    activa: true
+    antetitulo: Galería
+    titulo: Bodas que hemos cuidado
+    texto: "Fincas, jardines, iglesias románicas y patios con encanto de la provincia."
+    galeria:
+      - /fotos/galeria-1.jpg
+      - /fotos/galeria-2.jpg
+      - /fotos/galeria-3.jpg
+      - /fotos/galeria-4.jpg
+      - /fotos/galeria-5.jpg
+      - /fotos/galeria-6.jpg
+      - /fotos/galeria-7.jpg
+      - /fotos/galeria-8.jpg
+    cta: { texto: Más bodas en Instagram, url: "https://www.instagram.com/" }
+
+  packs:
+    activa: true
+    antetitulo: Packs
+    titulo: Tres maneras de trabajar juntos
+    texto: "Elegid el acompañamiento que necesitáis. Todos se pueden ajustar."
+    packs:
+      - { nombre: Coordinación del día, precio: "desde 950 €", texto: "Para parejas que lo tienen casi todo y quieren disfrutar sin estar pendientes.", incluye: "Dos reuniones previas; Cronograma del día; Contacto con todos los proveedores; Coordinadora durante la boda", destacado: false }
+      - { nombre: Organización parcial, precio: "desde 2.400 €", texto: "Os ayudamos a elegir y a cerrar lo importante, y nos ocupamos del día.", incluye: "Búsqueda de espacio y proveedores; Presupuesto y seguimiento; Diseño de la decoración; Ensayo de la ceremonia; Dos coordinadoras el día de la boda", destacado: true }
+      - { nombre: Organización integral, precio: "desde 4.200 €", texto: "De la primera idea al último baile, con un diseño hecho a vuestra medida.", incluye: "Todo lo del pack parcial; Diseño completo de la boda; Gestión de invitados y alojamientos; Actividades para el fin de semana; Equipo completo el día de la boda", destacado: false }
+    cta: { texto: Pedir presupuesto, url: "/#contacto" }
+    nota: "Precios orientativos con IVA incluido. Tras la primera reunión os damos un presupuesto cerrado."
+
+  proceso:
+    activa: true
+    antetitulo: Cómo trabajamos
+    titulo: Del primer café al último baile
+    items:
+      - { titulo: Nos conocemos, texto: "Un café, en persona o por videollamada, para escuchar qué boda queréis." }
+      - { titulo: Os proponemos, texto: "Espacios, proveedores y un presupuesto claro, con opciones para elegir." }
+      - { titulo: Diseñamos juntos, texto: "Decoración, música y cronograma, paso a paso y sin agobios." }
+      - { titulo: Lo coordinamos todo, texto: "El día de la boda estamos allí desde el montaje hasta el final." }
+
+  opiniones:
+    activa: true
+    antetitulo: Opiniones
+    titulo: Lo que cuentan las parejas
+    testimonios:
+      - { texto: "No tuvimos que preocuparnos de nada. Cada vez que mirábamos a nuestro alrededor, todo estaba en su sitio.", autor: Marta y Daniel, nota: "Boda en una finca de La Granja, junio de 2025" }
+      - { texto: "Nos ayudaron a encontrar un patio precioso en el centro y a ajustar el presupuesto sin renunciar a lo que queríamos.", autor: Lucía y Andrés, nota: "Boda civil en Segovia, septiembre de 2025" }
+      - { texto: "Vivimos fuera y lo organizamos casi todo a distancia. Estuvieron siempre localizables y fueron muy claras.", autor: Elena y Sergio, nota: "Boda en Pedraza, mayo de 2024" }
+      - { texto: "La decoración fue exactamente lo que habíamos imaginado: sencilla, con flores del campo y velas.", autor: Carmen e Iván, nota: "Boda en una ermita románica, octubre de 2024" }
+
+  preguntas:
+    activa: true
+    antetitulo: Preguntas frecuentes
+    titulo: Lo que nos suelen preguntar
+    preguntas:
+      - { pregunta: "¿Con cuánta antelación debemos contactar?", respuesta: "Lo ideal es entre doce y dieciocho meses antes, sobre todo para fechas de primavera y verano. Para coordinación del día, con tres meses basta." }
+      - { pregunta: "¿Trabajáis fuera de Segovia?", respuesta: "Sí. Trabajamos en toda la provincia y en Madrid, Ávila y Valladolid. Fuera de ahí, consultadnos." }
+      - { pregunta: "¿Podemos elegir nuestros propios proveedores?", respuesta: "Claro. Os recomendamos los que conocemos, pero coordinamos encantadas a los que ya tengáis." }
+      - { pregunta: "¿Organizáis también comuniones y eventos de empresa?", respuesta: "Sí, con el mismo cuidado: comuniones, aniversarios, cenas de empresa y presentaciones." }
+      - { pregunta: "¿Cómo se paga?", respuesta: "Una señal al firmar, un segundo pago a mitad de la organización y el resto la semana anterior al evento." }
+
+  contacto:
+    activa: true
+    antetitulo: Contacto
+    titulo: Contadnos vuestra idea
+    texto: "Os respondemos en 48 horas como mucho. Si ya tenéis fecha, indicadla y miramos disponibilidad."
+    imagen: /fotos/contacto.jpg
+    tipos_evento: "Boda; Comunión; Evento de empresa; Otro"
+    boton: Pedir información
