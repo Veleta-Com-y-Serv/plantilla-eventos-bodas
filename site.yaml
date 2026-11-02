@@ -50,10 +50,50 @@ secciones:
     titulo: Todo lo que necesita vuestro día
     texto: "Podéis contar con nosotras para todo o solo para lo que os falte."
     items:
-      - { titulo: Organización, texto: "Espacio, proveedores, presupuesto y calendario, en un solo sitio.", imagen: /fotos/servicio-organizacion.jpg, icono: calendario }
-      - { titulo: Decoración y flores, texto: "Ceremonia, mesas y rincones con flor de temporada y materiales naturales.", imagen: /fotos/servicio-decoracion.jpg, icono: flor }
-      - { titulo: Fotografía y vídeo, texto: "Profesionales de confianza con estilos distintos para que elijáis el vuestro.", imagen: /fotos/servicio-fotografia.jpg, icono: camara }
-      - { titulo: Catering y banquete, texto: "Menús de producto local, pruebas de menú y bodega incluidas.", imagen: /fotos/servicio-catering.jpg, icono: copa }
+      - titulo: Organización
+        texto: "Espacio, proveedores, presupuesto y calendario, en un solo sitio."
+        imagen: /fotos/servicio-organizacion.jpg
+        icono: calendario
+        imagenes: "/fotos/galeria-1.jpg; /fotos/galeria-2.jpg"
+        detalle: |
+          Organizar una boda es sobre todo tomar decisiones en el orden correcto, y ahí es donde más ayudamos. Empezamos escuchando qué celebración imagináis, cuántas personas queréis a vuestro lado y qué cosas son innegociables. Con eso buscamos espacios que encajen con el estilo y el presupuesto, os los enseñamos en persona y negociamos con ellos en vuestro nombre.
+
+          A partir de ahí montamos un calendario claro con cada gestión y cada fecha límite, un presupuesto vivo que se actualiza con cada cierre y una carpeta compartida donde está todo: contratos, pruebas, listas de invitados y proveedores. Os pedimos solo las decisiones que son vuestras y nos encargamos de seguir el resto.
+
+          Es un servicio pensado para parejas que trabajan, que viven lejos o que simplemente prefieren disfrutar de los meses previos. Podéis contratarlo completo o por partes, y el día de la boda nos tendréis en el espacio desde el montaje hasta que se apague la última luz.
+      - titulo: Decoración y flores
+        texto: "Ceremonia, mesas y rincones con flor de temporada y materiales naturales."
+        imagen: /fotos/servicio-decoracion.jpg
+        icono: flor
+        imagenes: "/fotos/galeria-3.jpg; /fotos/galeria-4.jpg"
+        detalle: |
+          La decoración es lo que hace que un espacio parezca vuestro. Partimos de lo que ya tiene el lugar, sus piedras, su luz y sus jardines, y le sumamos lo justo: flor de temporada, ramas, velas, telas naturales y vajilla que combine con todo. Preferimos un diseño sencillo y bien ejecutado antes que muchos elementos que compitan entre sí.
+
+          Trabajamos con floristas de la provincia que cultivan o compran cerca, de modo que las flores llegan frescas y encajan con la época del año. Os presentamos un tablero con la paleta, las texturas y una maqueta de la mesa para que veáis el conjunto antes de decidir.
+
+          Cubrimos la ceremonia, el aperitivo, las mesas del banquete y esos rincones que luego salen en las fotos: el cartel de bienvenida, el espacio del libro de firmas o la zona de baile. El mismo día montamos, repasamos cada detalle y, al terminar, recogemos todo para que no os preocupéis de nada.
+      - titulo: Fotografía y vídeo
+        texto: "Profesionales de confianza con estilos distintos para que elijáis el vuestro."
+        imagen: /fotos/servicio-fotografia.jpg
+        icono: camara
+        imagenes: "/fotos/galeria-5.jpg; /fotos/galeria-6.jpg"
+        detalle: |
+          Las fotos y el vídeo son lo que os queda cuando el día termina, así que merece la pena elegir bien. Trabajamos con fotógrafos y videógrafos de confianza que tienen estilos muy distintos: unos más documentales y discretos, otros más cuidados y de posado, otros con mirada artística. Os enseñamos bodas completas de cada uno, no solo las mejores imágenes, para que veáis cómo cuentan un día entero.
+
+          Os acompañamos en la conversación con ellos: qué momentos queréis que no falten, cómo os sentís delante de la cámara y qué tipo de entrega preferís, con álbum, galería en línea o película corta. Cuando hace falta, coordinamos una sesión previa para ganar confianza.
+
+          El día de la boda hablamos con el equipo de imagen para que conozca el cronograma, los espacios y a las personas importantes de ambas familias. Así pueden anticiparse y vosotros olvidaros de que están ahí, que es justo lo que queremos que pase.
+      - titulo: Catering y banquete
+        texto: "Menús de producto local, pruebas de menú y bodega incluidas."
+        imagen: /fotos/servicio-catering.jpg
+        icono: copa
+        imagenes: "/fotos/galeria-7.jpg; /fotos/galeria-8.jpg"
+        detalle: |
+          Una buena comida es lo que más recuerdan los invitados, y por eso le dedicamos tiempo. Colaboramos con cocinas que trabajan producto local y de temporada, desde el aperitivo hasta los postres, y adaptamos los menús al espacio, al horario y a vuestros gustos. Si hay alérgicos, vegetarianos o niños, lo tenemos en cuenta desde el principio.
+
+          Antes de cerrar nada organizamos una prueba de menú para que podáis probar, cambiar y decidir con calma. La bodega forma parte de esa conversación: elegimos vinos de la zona que acompañen cada plato y una barra de bebidas que funcione tanto en el cóctel como en la fiesta posterior.
+
+          Nos ocupamos también de lo práctico: el plan de mesas, los tiempos entre platos, el servicio y el corte de la tarta. El día del banquete, una de nosotras está pendiente de sala y cocina para que todo salga a su hora y vosotros solo tengáis que sentaros y disfrutar con vuestros invitados.
 
   galeria:
     activa: true

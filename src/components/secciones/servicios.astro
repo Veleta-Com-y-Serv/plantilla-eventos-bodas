@@ -1,8 +1,10 @@
 ---
 // Servicios: `items: [{titulo, texto, imagen, icono}]` en tarjetas altas 3:4 con marco fino interior,
 // título en cursiva y texto centrados. Sin imagen se muestra el icono en un círculo dorado.
+// Los servicios con `detalle` tienen página propia (/servicios/<slug>/): el título es un enlace y la tarjeta entera es clicable.
 import { seccion } from '../../data/site';
 import { altFicha } from '../../lib/seo';
+import { enlaceDe } from '../../lib/paginas';
 import Seccion from '../ui/Seccion.astro';
 import Titular from '../ui/Titular.astro';
 import Imagen from '../ui/Imagen.astro';
@@ -20,7 +22,7 @@ const columnas = n >= 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : n === 3 ? 'sm:grid-c
       {n > 0 && (
         <ul class:list={['mx-auto grid max-w-[22rem] gap-x-8 gap-y-14 sm:max-w-none', columnas]}>
           {s.items.map((it) => (
-            <li class="text-center">
+            <li class="servicio-item relative text-center">
               {it.imagen ? (
                 <span class="marco">
                   <Imagen src={it.imagen} alt={altFicha(it)} ancho={720} alto={960} class="aspect-[3/4] w-full object-cover" />
@@ -30,8 +32,9 @@ const columnas = n >= 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : n === 3 ? 'sm:grid-c
                   <Icono nombre={it.icono} tam={26} />
                 </span>
               )}
-              <h3 class="mt-6 text-[1.55rem]">{it.titulo}</h3>
+              <h3 class="mt-6 text-[1.55rem]">{enlaceDe(it) ? <a href={enlaceDe(it)} class="servicio-enlace">{it.titulo}</a> : it.titulo}</h3>
               {it.texto && <p class="suave mt-2">{it.texto}</p>}
+              {enlaceDe(it) && <span class="servicio-ver versalitas mt-4 inline-flex items-center gap-2" aria-hidden="true">Ver más <Icono nombre="flecha" tam={14} /></span>}
             </li>
           ))}
         </ul>
@@ -40,3 +43,11 @@ const columnas = n >= 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : n === 3 ? 'sm:grid-c
     </Seccion>
   )
 }
+
+<style>
+  .servicio-enlace { text-decoration: none; color: inherit; }
+  .servicio-enlace::after { content: ""; position: absolute; inset: 0; }
+  .servicio-enlace:focus-visible { outline: none; }
+  .servicio-item:has(.servicio-enlace:focus-visible) { outline: 2px solid var(--c-primario); outline-offset: 6px; }
+  .servicio-ver { color: var(--dorado-texto); }
+</style>
